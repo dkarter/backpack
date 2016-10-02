@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change:  Tue 14 Jun 2016 15:09:13 CDT
+" Last Change:  Sun 2 Oct 2016
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -47,3 +47,6 @@ let g:markdown_fenced_languages = [
       \ 'sql',
       \ 'bash=sh'
       \ ]
+
+" Map space as alias for leader
+nmap <space> \
