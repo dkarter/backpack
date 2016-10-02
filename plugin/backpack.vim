@@ -3,6 +3,13 @@
 " Maintainer: Dorian Karter
 " License: MIT
 
+" Prevent execution if already loaded ------------------   {{{
+if exists('g:loaded_dorians_backpack')
+  finish
+endif
+let g:loaded_dorians_backpack = 1
+" Prevent execution if already loaded ------------------   }}}
+
 " Behavior mod {{{
 set ignorecase   " ignore case in searches
 set smartcase    " will use case sensitive if capital letter present or \C
