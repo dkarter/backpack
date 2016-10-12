@@ -1,4 +1,4 @@
-# BACKPACK.vim
+# BACKPACK
 
 When you go pairing don't forget to bring your backpack.
 
