@@ -18,6 +18,15 @@ set gdefault     " Use 'g' flag by default with :s/foo/bar/.
 set magic        " Use 'magic' patterns (extended regular expressions).
 " }}}
 
+" FZF
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+
+" Pasting support
+set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
+
+" re-indent file and jump back to where the cursor was
+map <F7> mzgg=G`z
+
 " Allow j and k to work on visual lines (when wrapping)
 nnoremap k gk
 nnoremap j gj
@@ -25,12 +34,12 @@ nnoremap j gj
 " copy to end of line
 nnoremap Y y$
 " copy to system clipboard
-noremap gy "*y
+noremap gy "+y
 " copy whole file to system clipboard
-nnoremap gY gg"*yG
+nnoremap gY gg"+yG
 
 " FZF shortcuts
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-m> :Maps<CR>
 nnoremap <leader><leader> :Commands<CR>
@@ -40,20 +49,12 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+" CtrlSF shortcuts
+nnoremap <C-F>f :CtrlSF
+nnoremap <C-F>g :CtrlSF<CR>
+
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
-
-" highlight fenced code blocks in markdown
-let g:markdown_fenced_languages = [
-      \ 'html',
-      \ 'elm',
-      \ 'vim',
-      \ 'js=javascript',
-      \ 'python',
-      \ 'ruby',
-      \ 'sql',
-      \ 'bash=sh'
-      \ ]
 
 " Map space as alias for leader
 nmap <space> \
