@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change:  Sun 2 Oct 2016
+" Last Change:  Wed 12 Oct 2016
 " Maintainer: Dorian Karter
 " License: MIT
 
