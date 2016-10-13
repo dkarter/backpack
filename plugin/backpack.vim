@@ -43,7 +43,7 @@ nnoremap gY gg"+yG
 " FZF shortcuts
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-m> :Maps<CR>
+nnoremap <C-g>g :Ag<CR>
 nnoremap <leader><leader> :Commands<CR>
 
 " Incsearch Vim Plugin
