@@ -14,6 +14,7 @@ terryma/vim-multiple-cursors
 scrooloose/nerdtree
 dyng/ctrlsf.vim
 haya14busa/incsearch.vim
+killphi/vim-legend
 ```
 
 Install fzf from homebrew:

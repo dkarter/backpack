@@ -3,6 +3,8 @@
 " Maintainer: Dorian Karter
 " License: MIT
 
+scriptencoding utf-8
+
 " Prevent execution if already loaded ------------------   {{{
 if exists('g:loaded_dorians_backpack')
   finish
@@ -58,3 +60,11 @@ map <Leader>ct :!ctags -R .<CR>
 
 " Map space as alias for leader
 nmap <space> \
+
+" Coverage via Cadre + github.com/killphi/vim-legend
+let g:legend_active_auto = 0
+let g:legend_hit_color = 'ctermfg=64 cterm=bold gui=bold guifg=Green'
+let g:legend_ignored_sign = '◌'
+let g:legend_ignored_color = 'ctermfg=234'
+let g:legend_mapping_toggle = '<Leader>cv'
+let g:legend_mapping_toggle_line = '<localleader>cv'
