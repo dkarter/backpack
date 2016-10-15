@@ -16,10 +16,17 @@ scrooloose/nerdtree
 dyng/ctrlsf.vim
 haya14busa/incsearch.vim
 killphi/vim-legend
+scrooloose/syntastic
 ```
 
 Install fzf from homebrew:
 
 ```sh
 brew install fzf
+```
+
+Install rubocop
+
+```sh
+gem install rubocop
 ```
