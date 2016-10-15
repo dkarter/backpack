@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change:  Thu 13 Oct 2016
+" Last Change:  Fri 14 Oct 2016
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -26,8 +26,16 @@ set textwidth=80 " max line width
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(80,999),',')
 
+" NERDTree
+let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+
 " FZF
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <leader><leader> :Commands<CR>
 
 " Pasting support
 set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
@@ -45,12 +53,6 @@ nnoremap Y y$
 noremap gy "+y
 " copy whole file to system clipboard
 nnoremap gY gg"+yG
-
-" FZF shortcuts
-nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <leader><leader> :Commands<CR>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
