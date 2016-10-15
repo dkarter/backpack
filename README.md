@@ -10,6 +10,7 @@ dkarter/backpack
 junegunn/fzf
 junegunn/fzf.vim
 junegunn/vim-peekaboo
+junegunn/gv.vim
 terryma/vim-multiple-cursors
 scrooloose/nerdtree
 dyng/ctrlsf.vim
