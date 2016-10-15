@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change:  Wed 12 Oct 2016
+" Last Change:  Thu 13 Oct 2016
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -18,7 +18,13 @@ set smartcase    " will use case sensitive if capital letter present or \C
 set expandtab    " insert tab with right amount of spacing
 set gdefault     " Use 'g' flag by default with :s/foo/bar/.
 set magic        " Use 'magic' patterns (extended regular expressions).
+set textwidth=80 " max line width
 " }}}
+
+
+" Make it obvious where 80 characters is
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn=join(range(80,999),',')
 
 " FZF
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
