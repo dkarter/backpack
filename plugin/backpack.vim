@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change:  Fri 14 Oct 2016
+" Last Change: Tue 1 Nov 2016
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -77,6 +77,9 @@ nnoremap Y y$
 noremap gy "+y
 " copy whole file to system clipboard
 nnoremap gY gg"+yG
+
+" Switch between the last two files with tab tab
+nnoremap <tab><tab> <c-^>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
