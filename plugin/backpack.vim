@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change: Tue 1 Nov 2016
+" Last Change: Thu 19 Jan 2017
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -80,6 +80,9 @@ nnoremap gY gg"+yG
 
 " Switch between the last two files with tab tab
 nnoremap <tab><tab> <c-^>
+
+" Search for selected text
+vnoremap X y/<C-R>"<CR>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
