@@ -30,7 +30,7 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
