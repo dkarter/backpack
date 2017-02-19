@@ -1,5 +1,5 @@
 " Settings for pairing nicely with others
-" Last Change: Thu 19 Jan 2017
+" Last Change: Sun 19 Feb 2017
 " Maintainer: Dorian Karter
 " License: MIT
 
@@ -16,7 +16,6 @@ let g:loaded_dorians_backpack = 1
 set ignorecase   " ignore case in searches
 set smartcase    " will use case sensitive if capital letter present or \C
 set expandtab    " insert tab with right amount of spacing
-set gdefault     " Use 'g' flag by default with :s/foo/bar/.
 set magic        " Use 'magic' patterns (extended regular expressions).
 set textwidth=80 " max line width
 " }}}
