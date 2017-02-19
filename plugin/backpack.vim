@@ -66,7 +66,7 @@ nnoremap gY gg"+yG
 nnoremap <tab><tab> <c-^>
 
 " Search for selected text
-vnoremap X y/<C-R>"<CR>
+vnoremap * "xy/<C-R>x<CR>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
