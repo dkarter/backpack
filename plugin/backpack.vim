@@ -36,29 +36,14 @@ nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
 nnoremap <leader><leader> :Commands<CR>
 
-" Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[]
-let g:syntastic_html_tidy_ignore_errors = [
-    \ ' proprietary attribute \"ng-',
-    \  'plain text isn''t allowed in <head> elements',
-    \  '<base> escaping malformed URI reference',
-    \  'discarding unexpected <body>',
-    \  'escaping malformed URI reference',
-    \  'trimming empty <i>',
-    \  '</head> isn''t allowed in <body> elements'
-    \ ]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
-let g:syntastic_ruby_mri_exec='~/.rvm/rubies/ruby-2.2.2/bin/ruby'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_shell = '/bin/sh'
-let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_cucumber_cucumber_args = '--profile syntastic'
-let g:syntastic_cucumber_cucumber_exe = 'bin/cucumber'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_vim_checkers = ['vint']
+" NEOMAKE
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+augroup NeomakeOnSave
+  autocmd!
+  autocmd! BufWritePost * Neomake
+augroup END
+
 
 " Pasting support
 set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal

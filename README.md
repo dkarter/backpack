@@ -1,4 +1,4 @@
-# BACKPACK
+# 🎒 BACKPACK.VIM
 
 When you go pairing don't forget to bring your backpack.
 
@@ -16,7 +16,7 @@ scrooloose/nerdtree
 dyng/ctrlsf.vim
 haya14busa/incsearch.vim
 killphi/vim-legend
-scrooloose/syntastic
+neomake/neomake
 ```
 
 Install fzf from homebrew:
