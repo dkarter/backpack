@@ -52,6 +52,9 @@ endif
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 
+" Matchup
+let g:matchup_matchparen_status_offscreen = 0
+
 " NERDTree
 let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 nnoremap <Leader>nt :NERDTreeToggle<CR>
