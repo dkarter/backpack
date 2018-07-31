@@ -20,29 +20,55 @@ set magic        " Use 'magic' patterns (extended regular expressions).
 set textwidth=80 " max line width
 " }}}
 
-
 " Make it obvious where 80 characters is
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(80,999),',')
+
+" ====================================
+" Neosnippet:
+" ====================================
+
+let g:neosnippet#enable_completed_snippet = 1
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:neosnippet#enable_snipmate_compatibility = 1
 
 " NERDTree
 let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
+if has('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+elseif has('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
+endif
+
+let g:fzf_files_options = '--preview "(rougify {} || cat {}) | head -'.&lines.'"'
+
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
 nnoremap <leader><leader> :Commands<CR>
-
-" NEOMAKE
-let g:neomake_javascript_enabled_makers = ['eslint']
-
-augroup NeomakeOnSave
-  autocmd!
-  autocmd! BufWritePost * Neomake
-augroup END
 
 
 " Pasting support
@@ -68,14 +94,28 @@ nnoremap <tab><tab> <c-^>
 " Search for selected text
 vnoremap * "xy/<C-R>x<CR>
 
+" ====================================
+" indentLine
+" ====================================
+let g:indentLine_fileType = [
+      \ 'java',
+      \ 'ruby',
+      \ 'elixir',
+      \ 'javascript',
+      \ 'javascript.jsx',
+      \ 'html',
+      \ 'eruby',
+      \ 'vim'
+      \ ]
+
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui = '#454C5A'
+
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-
-" CtrlSF shortcuts
-nnoremap <C-F>f :CtrlSF
-nnoremap <C-F>g :CtrlSF<CR>
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
@@ -83,10 +123,3 @@ map <Leader>ct :!ctags -R .<CR>
 " Map space as alias for leader
 nmap <space> \
 
-" Coverage via Cadre + github.com/killphi/vim-legend
-let g:legend_active_auto = 0
-let g:legend_hit_color = 'ctermfg=64 cterm=bold gui=bold guifg=Green'
-let g:legend_ignored_sign = '◌'
-let g:legend_ignored_color = 'ctermfg=234'
-let g:legend_mapping_toggle = '<Leader>cv'
-let g:legend_mapping_toggle_line = '<localleader>cv'
