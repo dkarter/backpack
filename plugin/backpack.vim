@@ -25,6 +25,30 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(80,999),',')
 
 " ====================================
+" Deoplete:
+" ====================================
+
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+         \ pumvisible() ? "\<C-n>" :
+         \ <SID>check_back_space() ? "\<TAB>" :
+         \ deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
+endfunction
+
+" ====================================
+" Vim multiple cursors + DEOPLETE:
+" ====================================
+augroup VimMultiCursors
+  autocmd!
+  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
+  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+augroup END
+
+" ====================================
 " Neosnippet:
 " ====================================
 
