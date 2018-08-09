@@ -172,3 +172,8 @@ map <Leader>ct :!ctags -R .<CR>
 " Map space as alias for leader
 nmap <space> \
 
+" clear highlight when pressing esc in normal mode
+nmap <silent> <esc> :nohlsearch<cr>
+
+" sort selected lines
+vmap <silent> gs :sort<cr>
