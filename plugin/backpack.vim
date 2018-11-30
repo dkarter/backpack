@@ -24,6 +24,13 @@ set textwidth=80 " max line width
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(80,999),',')
 
+" rename current file
+  nnoremap <Leader>rn :Move <C-R>=expand("%")<CR>
+
+" replace word under cursor, globally, with confirmation
+  nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+  vnoremap <Leader>k y :%s/<C-r>"//gc<Left><Left><Left>
+
 " ====================================
 " Deoplete:
 " ====================================
@@ -83,12 +90,6 @@ let g:matchup_matchparen_status_offscreen = 0
 let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 
-" FZF
-if has('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-elseif has('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
-endif
 
 "Neovim
 
@@ -112,68 +113,87 @@ if has('nvim')
   tnoremap <C-o> <C-\><C-n><esc><cr>
 endif
 
-let g:fzf_files_options = '--preview "(rougify {} || cat {}) | head -'.&lines.'"'
+" ======================================
+" FZF
+" ======================================
+  let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git --ignore-file ~/.gitignore'
+  let $FZF_DEFAULT_OPTS='--ansi'
+  let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
-nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <leader><leader> :Commands<CR>
+  command! -bang -nargs=* FzfRg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
 
+  nnoremap <silent> <C-p> :Files<CR>
+  nnoremap <silent> <C-b> :Buffers<CR>
+  nnoremap <silent> <C-g>g :FzfRg!<CR>
+  nnoremap <silent> <leader><leader> :Commands<CR>
+
+" open editing file
+  nnoremap <silent> <leader>vr :call OpenConfigFile('~/.vimrc')<cr>
+  nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 
 " Pasting support
-set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
+  " Press F2 in insert mode to preserve tabs when pasting from clipboard into
+  " terminal (not necessary in NeoVim)
+  set pastetoggle=<F2>
 
 " re-indent file and jump back to where the cursor was
-map <F7> mzgg=G`z
+  map <F7> mzgg=G`z
 
 " Allow j and k to work on visual lines (when wrapping)
-nnoremap k gk
-nnoremap j gj
+  nnoremap k gk
+  nnoremap j gj
 
 " copy to end of line
-nnoremap Y y$
+  nnoremap Y y$
+
 " copy to system clipboard
-noremap gy "+y
+  noremap gy "+y
+
 " copy whole file to system clipboard
-nnoremap gY gg"+yG
+  nnoremap gY gg"+yG
 
 " Switch between the last two files with tab tab
-nnoremap <tab><tab> <c-^>
+  nnoremap <tab><tab> <c-^>
 
 " Search for selected text
-vnoremap * "xy/<C-R>x<CR>
+  vnoremap * "xy/<C-R>x<CR>
 
 " ====================================
 " indentLine
 " ====================================
-let g:indentLine_fileType = [
-      \ 'java',
-      \ 'ruby',
-      \ 'elixir',
-      \ 'javascript',
-      \ 'javascript.jsx',
-      \ 'html',
-      \ 'eruby',
-      \ 'vim'
-      \ ]
+  let g:indentLine_fileType = [
+        \ 'java',
+        \ 'ruby',
+        \ 'elixir',
+        \ 'javascript',
+        \ 'javascript.jsx',
+        \ 'html',
+        \ 'eruby',
+        \ 'vim'
+        \ ]
 
-let g:indentLine_char = '│'
-let g:indentLine_color_term = 238
-let g:indentLine_color_gui = '#454C5A'
+  let g:indentLine_char = '│'
+  let g:indentLine_color_term = 238
+  let g:indentLine_color_gui = '#454C5A'
 
 " Incsearch Vim Plugin
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
 
 " Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
+  map <Leader>ct :!ctags -R .<CR>
 
 " Map space as alias for leader
-nmap <space> \
+  nmap <space> \
 
 " clear highlight when pressing esc in normal mode
-nmap <silent> <esc> :nohlsearch<cr>
+  nmap <silent> <esc> :nohlsearch<cr>
 
 " sort selected lines
-vmap <silent> gs :sort<cr>
+  vmap <silent> gs :sort<cr>

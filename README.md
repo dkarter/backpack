@@ -2,8 +2,10 @@
 
 When you go pairing don't forget to bring your backpack.
 
+This plugin is a collection of some things I consider essential to my NeoVim
+workflow while being careful not to override common defaults.
 
-Add these plugins to your vim bundle
+Add these plugins to your Vim bundle file:
 
 ```vim
 " Dorian's Backpack
@@ -60,20 +62,50 @@ Plug 'jremmen/vim-ripgrep'
 " }}}
 ```
 
-Install fzf from homebrew:
+### Install FZF
+
+Mac:
 
 ```sh
 brew install fzf
 ```
 
-Install rubocop
+Linux:
+
+```sh
+sudo apt-get install fzf
+```
+
+### Install Rubocop
 
 ```sh
 gem install rubocop
 ```
 
-Install Rougify
+### Install RipGrep
+
+Mac:
 
 ```sh
-gem install rouge
+brew install ripgrep
+```
+
+Linux:
+
+```sh
+sudo apt-get install ripgrep
+```
+
+### Install Bat (for FZF previews)
+
+Mac:
+
+```sh
+brew install bat
+```
+
+Linux:
+
+```sh
+sudo dpkg -i bat_0.9.0_amd64.deb && sudo apt-get install bat
 ```
