@@ -3,7 +3,10 @@
 When you go pairing don't forget to bring your backpack.
 
 This plugin is a collection of some things I consider essential to my NeoVim
-workflow while being careful not to override common defaults.
+workflow while being careful not to override common defaults. These preferences
+are packaged into a plugin for portability. I use it for pairing at work so that
+I have to do less ergonomic gymnastics when switching between my personal
+machine and work machine.
 
 Add these plugins to your Vim bundle file:
 
